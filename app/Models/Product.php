@@ -20,4 +20,26 @@ class Product extends Model
 
         return $this->hasMany(ProductImage::class);
     }
+
+
+
+    public function getFeaturedImageUrlAttribute(){
+
+        $featuredImage = $this->images()->where('featured', true)->first(); //recupera la primera imagen destacada
+        
+        if(!$featuredImage){ // en caso de no haber ninguna, recupera la primera imagen no destacada
+
+            $featuredImage = $this->images()->first();
+        }
+
+        if($featuredImage){
+
+            //url es un atributo calculado resuelto en ProductImage.php
+            return $featuredImage->url;
+        }
+
+
+        //default
+        return '/images/products/default-image_product.png';
+    }
 }

@@ -14,7 +14,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
-	//CR
+	//el primer argumento es el path
+	//el segundo argumento indica a que método se llamará cuando se llame a esa ruta. en el primer caso ProductController.php
 
 	Route::get('/products','ProductController@index'); //listado de productos
 
@@ -26,7 +27,17 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
 	Route::post('/products/{id}/edit','ProductController@update'); //actualizar producto 
 
-	Route::delete('/products/{id}','ProductController@destroy'); //eliminar
+	Route::delete('/products/{id}','ProductController@destroy'); //eliminar producto
+
+	
+
+	Route::get('/products/{id}/images', 'ImageController@index');// listado de imágenes
+
+	Route::post('/products/{id}/images', 'ImageController@store');// introducir imagen
+
+	Route::delete('/products/{id}/images', 'ImageController@destroy'); //eliminar imagen
+
+	Route::get('/products/{id}/images/select/{image}', 'ImageController@select'); //destacar imagen
 
 });
 

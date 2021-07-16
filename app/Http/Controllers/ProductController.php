@@ -20,6 +20,7 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
+        
         //validar
         $rules = [
             'name' => 'required | min:3',
