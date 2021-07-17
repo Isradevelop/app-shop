@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -28,7 +29,7 @@ class ImageController extends Controller
 
 
         //crear un registro en la BD
-        if($moved){
+        if($move){
 
             $productImage = new ProductImage();
             $productImage->image = $fileName;

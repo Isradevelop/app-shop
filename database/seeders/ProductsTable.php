@@ -40,14 +40,14 @@ class ProductsTable extends Seeder
 
         //creamos 5 categorías de prueba
         $categories = Category::factory()
-            ->count(5)
+            ->count(4)
             ->create();
 
         //creamos 20 productos para cada categoría    
         $categories->each(function($category){
 
             $products = Product::factory()
-                            ->count(20)
+                            ->count(5)
                             ->make();
 
             $category->products()->saveMany($products);
@@ -57,7 +57,7 @@ class ProductsTable extends Seeder
             $products->each(function($p){
 
                 $images = ProductImage::factory()
-                            ->count(5)
+                            ->count(3)
                             ->make();
                 $p->images()->saveMany($images);
             });

@@ -18,7 +18,7 @@
     <!-- CSS Files -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" />
     <link href="{{asset('css/material-kit.css')}}" rel="stylesheet"/>
-
+    @yield('styles')
 </head>
 
 <body class="@yield('body-class')">
@@ -56,6 +56,10 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ url('/home') }}">Dashboard</a>
+                                    </li>
+
                                     @if(auth()->user()->admin)
                                     <li>
                                         <a href="{{ url('/admin/products') }}">

@@ -10,9 +10,15 @@ Route::get('/', 'TestController@welcome');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/products/{id}','ProductController@show'); 
+
+Route::post('/cart', 'CartDetailController@store');
+Route::delete('/cart', 'CartDetailController@destroy');
+
+Route::post('/order','CartController@update');
 
 
-Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
+Route::middleware(['auth','admin'])->prefix('admin')->namespace('Admin')->group(function(){
 
 	//el primer argumento es el path
 	//el segundo argumento indica a que método se llamará cuando se llame a esa ruta. en el primer caso ProductController.php
