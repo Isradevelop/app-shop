@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\Category;
 
 class TestController extends Controller
 {
     function welcome(){
-        $products = Product::paginate(9);
-        return view('welcome')->with(compact('products'));
+        $categories = Category::has('products')->get();
+        return view('welcome')->with(compact('categories'));
     }
 }

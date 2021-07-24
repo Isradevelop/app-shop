@@ -12,7 +12,7 @@ class CartController extends Controller
         $cart->status = 'Pending';
         $cart->save();
 
-        $notification = 'Pedido realizado correctamente';
+        $notification = 'Pedido realizado correctamente, recibirá un mail de confirmación.';
         return back()->with(compact('notification'));
     }
 }

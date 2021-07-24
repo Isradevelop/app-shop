@@ -40,6 +40,18 @@ class Product extends Model
 
 
         //default
-        return '/images/products/default-image_product.png';
+        return '/images/default-image_product.png';
+    }
+
+
+
+    public function getCategoryNameAttribute(){
+
+        if($this->category){
+
+            return $this->category->name;
+        }
+
+        return 'General';
     }
 }
